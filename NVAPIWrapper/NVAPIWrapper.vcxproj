@@ -22,8 +22,9 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{CB44E5FF-22B7-402E-8CD6-30F90B5093DC}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>NVUtils</RootNamespace>
+    <RootNamespace>NVAPIWrapper</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
+    <ProjectName>NVAPIWrapper</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -129,6 +130,9 @@
     <Link>
       <SubSystem>Windows</SubSystem>
     </Link>
+    <PostBuildEvent>
+      <Command>copy "$(TargetDir)NVAPIWrapper.dll" "$(SolutionDir)NvidiaOverclockCSTest\Build\bin\$(ConfigurationName)\$(PlatformName)\NVAPIWrapper.dll" /Y &gt;NUL </Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -147,8 +151,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="InitException.h" />
     <ClInclude Include="Nvidia.h" />
+    <ClInclude Include="Util.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Nvidia.cpp" />
