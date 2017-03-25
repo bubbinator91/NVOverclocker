@@ -30,8 +30,12 @@ int main(int argc, char **argv)
 
 	if (NvQueryInterface == 0)
 	{
-		printf("\nnvapi.dll could not be loaded! This is probably because you have\nno nVidia hardware, and, therefore, no nVidia drivers installed.\n");
-		return 0;
+        NvQueryInterface = (NvAPI_QueryInterface_t)GetProcAddress(LoadLibrary(_T("nvapi64.dll")), "nvapi_QueryInterface");
+        if (NvQueryInterface == 0)
+        {
+            printf("\nnvapi.dll could not be loaded! This is probably because you have\nno nVidia hardware, and, therefore, no nVidia drivers installed.\n");
+            return 0;
+        }
 	}
 
 	NvInit = (NvAPI_Initialize_t)NvQueryInterface(0x0150E828);
