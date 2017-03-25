@@ -107,7 +107,8 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(TargetDir)NVAPIWrapper.dll" "$(SolutionDir)NvidiaOverclockCSTest\Build\bin\$(ConfigurationName)\$(PlatformName)\NVAPIWrapper.dll" /Y &gt;NUL </Command>
+      <Command>copy "$(TargetDir)NVAPIWrapper.dll" "$(SolutionDir)NvidiaOverclockCSTest\Build\bin\$(ConfigurationName)\$(PlatformName)\NVAPIWrapper.dll" /Y &gt;NUL 
+copy "$(TargetDir)NVAPIWrapper.dll" "$(SolutionDir)NVOverclocker\Build\bin\$(ConfigurationName)\$(PlatformName)\NVAPIWrapper.dll" /Y &gt;NUL </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -134,7 +135,8 @@
       <SubSystem>Windows</SubSystem>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(TargetDir)NVAPIWrapper.dll" "$(SolutionDir)NvidiaOverclockCSTest\Build\bin\$(ConfigurationName)\$(PlatformName)\NVAPIWrapper.dll" /Y &gt;NUL </Command>
+      <Command>copy "$(TargetDir)NVAPIWrapper.dll" "$(SolutionDir)NvidiaOverclockCSTest\Build\bin\$(ConfigurationName)\$(PlatformName)\NVAPIWrapper.dll" /Y &gt;NUL 
+copy "$(TargetDir)NVAPIWrapper.dll" "$(SolutionDir)NVOverclocker\Build\bin\$(ConfigurationName)\$(PlatformName)\NVAPIWrapper.dll" /Y &gt;NUL </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

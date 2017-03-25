@@ -1,12 +1,47 @@
-﻿<Window x:Class="NVOverclocker.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:NVOverclocker"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+﻿<Controls:MetroWindow
+    x:Class="NVOverclocker.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:local="clr-namespace:NVOverclocker"
+    mc:Ignorable="d"
+    Title="NV Overclocker"
+    Height="350"
+    Width="200"
+    ResizeMode="CanResizeWithGrip">
+    
     <Grid>
         
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <Label Name="Label_GPU_Name" Content="GPU:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Label Name="Label_GPU_Name_Text" Content="NULL" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="35,0,0,0" />
+
+        <Label Name="Label_GPU_Bios" Content="Bios:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,20,0,0" />
+        <Label Name="Label_GPU_Bios_Text" Content="NULL" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="35,20,0,0" />
+
+        <Label Name="Label_GPU_vRam" Content="vRam:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,40,0,0" />
+        <Label Name="Label_GPU_vRam_Text" Content="NULL" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="35,40,0,0" />
+
+        <Label Name="Label_GPU_CoreClock" Content="Core Clock:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,60,0,0" />
+        <Label Name="Label_GPU_CoreClock_Text" Content="NULL" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="70,60,0,0" />
+
+        <Label Name="Label_GPU_vRamClock" Content="vRam Clock:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,80,0,0" />
+        <Label Name="Label_GPU_vRamClock_Text" Content="NULL" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="70,80,0,0" />
+
+        <Label Name="Label_GPU_CoreOverclock" Content="Current Core Overclock:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,100,0,0" />
+        <Label Name="Label_GPU_CoreOverclock_Text" Content="NULL" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="135,100,0,0" />
+
+        <Label Name="Label_GPU_vRamOverclock" Content="Current vRam Overclock:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,120,0,0" />
+        <Label Name="Label_GPU_vRamOverclock_Text" Content="NULL" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="135,120,0,0" />
+
     </Grid>
-</Window>
+    
+</Controls:MetroWindow>
