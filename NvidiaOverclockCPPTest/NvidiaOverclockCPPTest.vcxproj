@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{9BC7ED8A-6B7D-43E2-9CFB-79E862871A73}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>NvidiaOverclock</RootNamespace>
+    <RootNamespace>NvidiaOverclockCPPTest</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
     <ProjectName>NvidiaOverclockCPPTest</ProjectName>
   </PropertyGroup>
