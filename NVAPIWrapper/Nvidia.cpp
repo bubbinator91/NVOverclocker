@@ -194,18 +194,16 @@ extern "C"
 
             if ((coreOverclock <= 250) && (coreOverclock >= -250))
             {
-                int *buf = static_cast<int*>(malloc(0x1c94));
-                memset(buf, 0, 0x1c94);
-                buf[0] = 0x11c94;
-                buf[2] = 1;
-                buf[3] = 1;
+                int *buf = new int[0x1c94];
+                std::fill(buf, buf + 0x1c94, 0);
+                buf[0] = 0x11c94; buf[2] = 1; buf[3] = 1;
                 buf[10] = static_cast<int>(coreOverclock * 1000);
                 if (NvSetPstates(gpuHandles[gpuIndex], buf))
                 {
-                    free(buf);
+                    delete[] buf;
                     return false;
                 }
-                free(buf);
+                delete[] buf;
             }
             else
             {
@@ -214,19 +212,16 @@ extern "C"
 
             if ((ramOverclock <= 250) && (ramOverclock >= -250))
             {
-                int *buf = static_cast<int*>(malloc(0x1c94));
-                memset(buf, 0, 0x1c94);
-                buf[0] = 0x11c94;
-                buf[2] = 1;
-                buf[3] = 1;
-                buf[7] = 4;
+                int *buf = new int[0x1c94];
+                std::fill(buf, buf + 0x1c94, 0);
+                buf[0] = 0x11c94; buf[2] = 1; buf[3] = 1; buf[7] = 4;
                 buf[10] = (memtype <= 7) ? static_cast<int>(ramOverclock * 1000) : static_cast<int>(ramOverclock * 1000 * 2);
                 if (NvSetPstates(gpuHandles[gpuIndex], buf))
                 {
-                    free(buf);
+                    delete[] buf;
                     return false;
                 }
-                free(buf);
+                delete[] buf;
             }
             else
             {

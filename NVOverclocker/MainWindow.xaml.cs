@@ -89,6 +89,33 @@ namespace NVOverclocker
             }
         }
 
+        private async void Button_Clear_Overclock_Click(object sender, RoutedEventArgs e)
+        {
+            if (numGPUs > 0)
+            {
+                Int32.TryParse(TextBox_GPU_CoreOverclock.Text.Substring(0, TextBox_GPU_CoreOverclock.Text.Length - 4), out Int32 coreOverclock);
+                Int32.TryParse(TextBox_GPU_vRamOverclock.Text.Substring(0, TextBox_GPU_vRamOverclock.Text.Length - 4), out Int32 ramOverclock);
+
+                if (coreOverclock != 0 && ramOverclock != 0)
+                {
+                    if (NvidiaUtil.SetOverclock((UInt32)numGPUs, (Int32)0, (Int32)0))
+                    {
+                        await this.ShowMessageAsync("Success!", "Overclock cleared successfully...", MessageDialogStyle.Affirmative, new MetroDialogSettings() { DialogMessageFontSize = 12, DialogTitleFontSize = 15 });
+                    }
+                    else
+                    {
+                        await this.ShowMessageAsync("Failed!", "Failed to clear overclock...", MessageDialogStyle.Affirmative, new MetroDialogSettings() { DialogMessageFontSize = 12, DialogTitleFontSize = 15 });
+                    }
+
+                    UpdateGPUInfo();
+                }
+                else
+                {
+                    await this.ShowMessageAsync("Can't Do That!", "No overclock is currently applied...", MessageDialogStyle.Affirmative, new MetroDialogSettings() { DialogMessageFontSize = 12, DialogTitleFontSize = 15 });
+                }
+            }
+        }
+
         private void UpdateGPUInfo()
         {
             numGPUs = NvidiaUtil.GetNumberOfGPUs();
