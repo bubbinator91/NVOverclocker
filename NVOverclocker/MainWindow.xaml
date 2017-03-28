@@ -9,39 +9,78 @@
     mc:Ignorable="d"
     Title="NV Overclocker"
     Height="350"
-    Width="200"
-    ResizeMode="CanResizeWithGrip">
-    
+    Width="350"
+    ResizeMode="NoResize"
+    SaveWindowPosition="True">
+
     <Grid>
-        
+
         <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="35"/>
+            <RowDefinition/>
+            <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+
+        <Label Content="GPU Info:" Grid.Row="0" Grid.Column="0"/>
+
+        <Rectangle Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="4" Stroke="White" Margin="1,1,1,1" StrokeThickness="0.5" />
         
-        <Label Name="Label_GPU_Name" Content="GPU:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Label Name="Label_GPU_Name_Text" Content="NULL" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="35,0,0,0" />
+        <WrapPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="1,4,2,2">
+            <Label Name="Label_GPU_Name" Content="GPU:" Grid.Row="0" Grid.Column="1" Margin="0,0,0,0" />
+            <TextBox Name="TextBox_GPU_Name" Text="NULL" IsReadOnly="True" Grid.Row="0" Grid.Column="2" Margin="0,1,0,0" Width="120" />
+        </WrapPanel>
 
-        <Label Name="Label_GPU_Bios" Content="Bios:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,20,0,0" />
-        <Label Name="Label_GPU_Bios_Text" Content="NULL" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="35,20,0,0" />
+        <WrapPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="2,4,2,2">
+            <Label Name="Label_GPU_Bios" Content="Bios:" Margin="0,0,0,0" />
+            <TextBox Name="TextBox_GPU_Bios" Text="NULL" IsReadOnly="True" Margin="0,1,0,0" Width="120" />
+        </WrapPanel>
 
-        <Label Name="Label_GPU_vRam" Content="vRam:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,40,0,0" />
-        <Label Name="Label_GPU_vRam_Text" Content="NULL" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="35,40,0,0" />
+        <WrapPanel Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="2,4,2,2">
+            <Label Name="Label_GPU_vRam_Type" Content="vRam Type:" Margin="0,0,0,0" />
+            <TextBox Name="TextBox_GPU_vRam_Type" Text="NULL" IsReadOnly="True" Margin="0,1,0,0" Width="92" />
+        </WrapPanel>
 
-        <Label Name="Label_GPU_CoreClock" Content="Core Clock:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,60,0,0" />
-        <Label Name="Label_GPU_CoreClock_Text" Content="NULL" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="70,60,0,0" />
+        <WrapPanel Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Margin="6,4,2,2">
+            <Label Name="Label_GPU_vRam_Size" Content="vRam Size:" Margin="0,0,0,0" />
+            <TextBox Name="TextBox_GPU_vRam_Size" Text="NULL" IsReadOnly="True" Margin="0,1,0,0" Width="92" />
+        </WrapPanel>
 
-        <Label Name="Label_GPU_vRamClock" Content="vRam Clock:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,80,0,0" />
-        <Label Name="Label_GPU_vRamClock_Text" Content="NULL" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="70,80,0,0" />
+        <Label Content="GPU Clocks:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Bottom"/>
+        
+        <Rectangle Grid.Row="4" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="4" Stroke="White" Margin="1,1,1,1" StrokeThickness="0.5" />
 
-        <Label Name="Label_GPU_CoreOverclock" Content="Current Core Overclock:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,100,0,0" />
-        <Label Name="Label_GPU_CoreOverclock_Text" Content="NULL" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="135,100,0,0" />
+        <WrapPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="2,4,2,2">
+            <Label Name="Label_GPU_CoreClock" Content="Core Clock:" Margin="0,0,0,0" />
+            <TextBox Name="TextBox_GPU_CoreClock" Text="NULL" IsReadOnly="True" Width="85" Margin="0,0,0,0" />
+        </WrapPanel>
 
-        <Label Name="Label_GPU_vRamOverclock" Content="Current vRam Overclock:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,120,0,0" />
-        <Label Name="Label_GPU_vRamOverclock_Text" Content="NULL" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="135,120,0,0" />
+        <WrapPanel Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Margin="2,4,2,2">
+            <Label Name="Label_GPU_vRamClock" Content="vRam Clock:" Margin="0,0,0,0" />
+            <TextBox Name="TextBox_GPU_vRamClock" Text="NULL" IsReadOnly="True" Width="88" Margin="0,0,0,0" />
+        </WrapPanel>
+
+        <WrapPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="2,4,2,2">
+            <Label Name="Label_GPU_CoreOverclock" Content="Core Overclock:" Margin="0,0,0,0" />
+            <TextBox Name="TextBox_GPU_CoreOverclock" Text="NULL" Width="62" Margin="0,0,0,0" />
+        </WrapPanel>
+
+        <WrapPanel Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Margin="2,4,2,2">
+            <Label Name="Label_GPU_vRamOverclock" Content="vRam Overclock:" Margin="0,0,0,0" />
+            <TextBox Name="TextBox_GPU_vRamOverclock" Text="NULL" Width="65" Margin="0,0,0,0" />
+        </WrapPanel>
+
+        <Button Name="Button_Apply_Overclock" Content="Apply Overclock" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Margin="10,10,10,10" Style="{StaticResource AccentedSquareButtonStyle}" Click="Button_Apply_Overclock_Click" />
 
     </Grid>
-    
+
 </Controls:MetroWindow>

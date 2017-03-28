@@ -42,13 +42,14 @@ namespace NVOverclocker
                 var gpuInfo = new GPUInfo();
                 if (NvidiaUtil.GetGPUInfo((UInt32)numGPUs, ref gpuInfo))
                 {
-                    Label_GPU_Name_Text.Content = gpuInfo.name;
-                    Label_GPU_Bios_Text.Content = gpuInfo.bios;
-                    Label_GPU_vRam_Text.Content = (gpuInfo.ramSize / 1024) + "MB " + gpuInfo.ramType;
-                    Label_GPU_CoreClock_Text.Content = (gpuInfo.currentCoreClock / 1000) + "MHz";
-                    Label_GPU_vRamClock_Text.Content = (gpuInfo.currentRamClock / 1000) + "MHz";
-                    Label_GPU_CoreOverclock_Text.Content = (gpuInfo.currentCoreOverclock / 1000) + "MHz";
-                    Label_GPU_vRamOverclock_Text.Content = (gpuInfo.currentRamOverclock / 1000) + "MHz";
+                    TextBox_GPU_Name.Text = gpuInfo.name;
+                    TextBox_GPU_Bios.Text = gpuInfo.bios;
+                    TextBox_GPU_vRam_Type.Text = gpuInfo.ramType;
+                    TextBox_GPU_vRam_Size.Text = (gpuInfo.ramSize / 1024) + " MB";
+                    TextBox_GPU_CoreClock.Text = (gpuInfo.currentCoreClock / 1000) + " MHz";
+                    TextBox_GPU_vRamClock.Text = (gpuInfo.currentRamClock / 1000) + " MHz";
+                    TextBox_GPU_CoreOverclock.Text = (gpuInfo.currentCoreOverclock / 1000) + " MHz";
+                    TextBox_GPU_vRamOverclock.Text = (gpuInfo.currentRamOverclock / 1000) + " MHz";
                 }
                 else
                 {
@@ -56,6 +57,11 @@ namespace NVOverclocker
                     Application.Current.Shutdown();
                 }
             }
+        }
+
+        private void Button_Apply_Overclock_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
