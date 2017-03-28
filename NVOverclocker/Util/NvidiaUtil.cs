@@ -26,5 +26,8 @@ namespace NVOverclocker.Util
 
         [DllImport("NVAPIWrapper.dll", CharSet = CharSet.Unicode)]
         public static extern bool GetGPUInfo([In] UInt32 gpuIndex, [In, Out] ref GPUInfo gpuInfo);
+
+        [DllImport("NVAPIWrapper.dll")]
+        public static extern bool SetOverclock([In] UInt32 gpuIndex, [In] Int32 coreOverclock, [In] Int32 ramOverclock);
     }
 }

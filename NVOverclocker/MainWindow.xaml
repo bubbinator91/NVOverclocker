@@ -71,12 +71,12 @@
 
         <WrapPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="2,4,2,2">
             <Label Name="Label_GPU_CoreOverclock" Content="Core Overclock:" Margin="0,0,0,0" />
-            <TextBox Name="TextBox_GPU_CoreOverclock" Text="NULL" Width="62" Margin="0,0,0,0" />
+            <TextBox Name="TextBox_GPU_CoreOverclock" Text="NULL" Width="62" Margin="0,0,0,0" GotFocus="TextBox_GPU_CoreOverclock_GotFocus" LostFocus="TextBox_GPU_CoreOverclock_LostFocus" PreviewTextInput="TextBoxValidateInput" />
         </WrapPanel>
 
         <WrapPanel Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Margin="2,4,2,2">
             <Label Name="Label_GPU_vRamOverclock" Content="vRam Overclock:" Margin="0,0,0,0" />
-            <TextBox Name="TextBox_GPU_vRamOverclock" Text="NULL" Width="65" Margin="0,0,0,0" />
+            <TextBox Name="TextBox_GPU_vRamOverclock" Text="NULL" Width="65" Margin="0,0,0,0" GotFocus="TextBox_GPU_vRamOverclock_GotFocus" LostFocus="TextBox_GPU_vRamOverclock_LostFocus" PreviewTextInput="TextBoxValidateInput" />
         </WrapPanel>
 
         <Button Name="Button_Apply_Overclock" Content="Apply Overclock" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Margin="10,10,10,10" Style="{StaticResource AccentedSquareButtonStyle}" Click="Button_Apply_Overclock_Click" />

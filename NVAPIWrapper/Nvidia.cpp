@@ -136,8 +136,108 @@ extern "C"
         }
     }
 
-    __declspec(dllexport) void SetOverclock()
+    // Sets the overclock for the given GPU.
+    //
+    // Parameters:
+    //    gpuNum - The index of the GPU. Greater than or equal to 1.
+    //    coreOverclock - The MHz value to add to the current core clock speed.
+    //    ramOverclock - The MHz value to add to the current ram clock speed.
+    //
+    // Return:
+    //    True upon success; false on failure or refusal to apply overclock.
+    __declspec(dllexport) bool SetOverclock(_In_ UINT32 gpuNum, _In_ INT32 coreOverclock, _In_ INT32 ramOverclock)
     {
+        if (gpuNum <= 0)
+        {
+            return false;
+        }
 
+        UINT32 gpuIndex = gpuNum - 1;
+
+        NvAPI_QueryInterface_t NvQueryInterface = 0;
+        NvAPI_Initialize_t NvInit = 0;
+        NvAPI_Unload_t NvUnload = 0;
+        NvAPI_EnumPhysicalGPUs_t NvEnumGPUs = 0;
+        NvAPI_GPU_GetRamType_t NvGetMemType = 0;
+        NvAPI_GPU_SetPstates20_t NvSetPstates = 0;
+        int *gpuHandles[64] = { 0 };
+        int memtype = 0;
+        INT32 numGPUs = -1;
+
+        // Try loading the 32bit nvapi library
+        NvQueryInterface = (NvAPI_QueryInterface_t)GetProcAddress(LoadLibrary(_T("nvapi.dll")), "nvapi_QueryInterface");
+
+        // If the 32bit nvapi library didn't work, try the 64bit one
+        if (NvQueryInterface == 0)
+        {
+            NvQueryInterface = (NvAPI_QueryInterface_t)GetProcAddress(LoadLibrary(_T("nvapi64.dll")), "nvapi_QueryInterface");
+        }
+
+        // Return false if neither worked
+        if (NvQueryInterface == 0)
+        {
+            return false;
+        }
+
+        NvInit = (NvAPI_Initialize_t)NvQueryInterface(0x0150E828);
+        NvUnload = (NvAPI_Unload_t)NvQueryInterface(0xD22BDD7E);
+        NvEnumGPUs = (NvAPI_EnumPhysicalGPUs_t)NvQueryInterface(0xE5AC921F);
+        NvGetMemType = (NvAPI_GPU_GetRamType_t)NvQueryInterface(0x57F7CAAC);
+        NvSetPstates = (NvAPI_GPU_SetPstates20_t)NvQueryInterface(0x0F4DAE6B);
+
+        NvInit();
+        NvEnumGPUs(gpuHandles, &numGPUs);
+
+        if ((gpuIndex >= 0) && (static_cast<INT32>(gpuIndex) < numGPUs))
+        {
+            NvGetMemType(gpuHandles[gpuIndex], &memtype);
+
+            if ((coreOverclock <= 250) && (coreOverclock >= -250))
+            {
+                int *buf = static_cast<int*>(malloc(0x1c94));
+                memset(buf, 0, 0x1c94);
+                buf[0] = 0x11c94;
+                buf[2] = 1;
+                buf[3] = 1;
+                buf[10] = static_cast<int>(coreOverclock * 1000);
+                if (NvSetPstates(gpuHandles[gpuIndex], buf))
+                {
+                    free(buf);
+                    return false;
+                }
+                free(buf);
+            }
+            else
+            {
+                return false;
+            }
+
+            if ((ramOverclock <= 250) && (ramOverclock >= -250))
+            {
+                int *buf = static_cast<int*>(malloc(0x1c94));
+                memset(buf, 0, 0x1c94);
+                buf[0] = 0x11c94;
+                buf[2] = 1;
+                buf[3] = 1;
+                buf[7] = 4;
+                buf[10] = (memtype <= 7) ? static_cast<int>(ramOverclock * 1000) : static_cast<int>(ramOverclock * 1000 * 2);
+                if (NvSetPstates(gpuHandles[gpuIndex], buf))
+                {
+                    free(buf);
+                    return false;
+                }
+                free(buf);
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+
+        return true;
     }
 }
